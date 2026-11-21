@@ -1,0 +1,31 @@
+# Per-device credentials and site-specific configuration must stay private.
+/device_auth.lua
+/device/device_auth.lua
+/config.lua
+/device/config.lua
+/server/wrangler.toml
+/server/.dev.vars
+/server/.dev.vars.*
+!/server/.dev.vars.example
+/.env
+/.env.*
+!/.env.example
+
+# Local runtimes, dependency installs, caches, and generated files.
+**/.wrangler/
+**/.zcode/
+**/node_modules/
+**/__pycache__/
+*.py[cod]
+*.map
+/device-test-deps/
+
+# Private operations and historical deployment records.
+/DEVICE_STORAGE.md
+/server/CLEANUP.md
+/server/MEMORY_RETENTION.md
+/server/VALIDATION.md
+/server/WSS_VALIDATION.md
+/server/scripts/provision-memory-device.mjs
+/server/scripts/verify-production.mjs
+/diagnostics/

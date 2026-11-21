@@ -1,0 +1,8 @@
+-- Copy to device_auth.lua and replace every placeholder with per-device values.
+-- Keep the completed device_auth.lua private; never commit or share it.
+return {
+    server_url = "https://relay.example.com",
+    identity_type = "sn",
+    identity_value = "YOUR_DEVICE_SERIAL_NUMBER",
+    token = "REPLACE_WITH_A_UNIQUE_43_CHARACTER_BASE64URL_TOKEN",
+}

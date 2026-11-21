@@ -1,0 +1,39 @@
+name = "air780-sms-relay"
+main = "src/index.js"
+compatibility_date = "2025-11-01"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+run_worker_first = ["/api/*"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "air780-sms-relay-data"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+migrations_dir = "migrations"
+
+[[durable_objects.bindings]]
+name = "DEVICE_SESSION"
+class_name = "DeviceSession"
+
+[[migrations]]
+tag = "device-session-v1"
+new_sqlite_classes = ["DeviceSession"]
+
+[[ratelimits]]
+name = "RELAY_REGISTRATION_LIMIT"
+namespace_id = "1" # Replace with a unique namespace ID in your Cloudflare account.
+simple = { limit = 24, period = 60 }
+
+[vars]
+EVENT_RETENTION_DAYS = "7"
+SMS_RETENTION_DAYS = "30"
+WS_HEARTBEAT_SECONDS = "60"
+
+[triggers]
+crons = ["*/5 * * * *", "2-59/5 * * * *"]
+
+# Enable this binding after configuring Cloudflare Email Routing or Email Sending.
+# [[send_email]]
+# name = "SEND_EMAIL"

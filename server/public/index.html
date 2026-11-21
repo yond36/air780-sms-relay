@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#14253a">
+  <title>短信转发运维台</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <main id="auth" class="auth-layout" aria-labelledby="auth-title">
+    <div class="auth-shell">
+      <div class="auth-brand">
+        <div>
+          <span class="brand-name">短信转发</span>
+          <p class="auth-product">运维台</p>
+        </div>
+        <div class="route-diagram" aria-hidden="true">
+          <span class="route-input"></span>
+          <span class="route-line"></span>
+          <span class="route-branch"></span>
+          <span class="route-output route-output--top"></span>
+          <span class="route-output route-output--middle"></span>
+          <span class="route-output route-output--bottom"></span>
+        </div>
+      </div>
+      <section class="auth-pane">
+        <h1 id="auth-title" tabindex="-1">登录管理台</h1>
+        <p id="auth-status" class="muted" role="status">正在检查会话…</p>
+        <form id="login-form" class="auth-form" hidden>
+          <div class="field">
+            <label for="login-password">管理密码</label>
+            <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+          </div>
+          <p id="auth-error" class="inline-error" role="alert" hidden></p>
+          <button id="login-submit" class="button button--primary" type="submit">登录</button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <div id="console" hidden>
+    <a class="skip-link" href="#page-title">跳到主内容</a>
+    <header class="masthead">
+      <div class="site-width masthead-top">
+        <a class="brand" href="#events" aria-label="短信转发运维台，前往事件">
+          <span class="brand-icon" aria-hidden="true"></span>
+          <span class="brand-name">短信转发</span>
+          <span class="brand-product">运维台</span>
+        </a>
+        <button id="logout" class="button button--mast" type="button">退出登录</button>
+      </div>
+      <nav class="site-width site-nav" aria-label="管理导航">
+        <a href="#devices" data-view="devices">设备</a>
+        <a href="#channels" data-view="channels">渠道</a>
+        <a href="#templates" data-view="templates">模板</a>
+        <a href="#rules" data-view="rules">规则</a>
+        <a href="#events" data-view="events">事件</a>
+        <a href="#sms" data-view="sms">短信</a>
+        <a href="#jobs" data-view="jobs">计划任务</a>
+      </nav>
+    </header>
+
+    <main class="site-width workspace" aria-labelledby="page-title">
+      <header class="page-heading">
+        <h1 id="page-title" tabindex="-1"></h1>
+        <div class="page-actions">
+          <button id="refresh" class="button" type="button">刷新</button>
+          <button id="retention" class="button" type="button" aria-haspopup="dialog" aria-controls="operation-dialog" hidden>保留与清理</button>
+          <button id="create" class="button button--primary" type="button" hidden></button>
+        </div>
+      </header>
+      <div id="page-content"></div>
+    </main>
+  </div>
+
+  <div class="notice-region" role="status" aria-live="polite" aria-atomic="true">
+    <p id="notice" class="notice" hidden></p>
+  </div>
+
+  <dialog id="operation-dialog" class="operation-dialog" aria-labelledby="dialog-title">
+    <header class="dialog-heading">
+      <h2 id="dialog-title" tabindex="-1"></h2>
+      <button id="dialog-close" class="button button--quiet" type="button">关闭</button>
+    </header>
+    <div id="dialog-content" class="dialog-content"></div>
+  </dialog>
+</body>
+</html>
